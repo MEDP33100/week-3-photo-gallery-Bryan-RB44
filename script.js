@@ -67,6 +67,13 @@ const sectGallery = document.getElementById('gallery');
 function displayAll_button() {
     //Removes all images already displayed before hand
     sectGallery.innerHTML = ' ';
+    
+    photos.forEach(photos => {
+        const imgDisplay = document.createElement('img');
+        imgDisplay.src = photos.url;
+
+        sectGallery.appendChild(imgDisplay);
+    })
 };
 
 //Function to display only nature pics
@@ -126,3 +133,5 @@ document.getElementById('all').addEventListener('click', displayAll_button);
 document.getElementById('nature').addEventListener('click', displayNature_button);
 document.getElementById('city').addEventListener('click', displayCity_button);
 document.getElementById('animals').addEventListener('click', displayAnimals_button);
+//Event for loading more images
+document.getElementById('loadMore');
