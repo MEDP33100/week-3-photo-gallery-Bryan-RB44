@@ -58,22 +58,51 @@ console.log('hello');
 //Creating a variable for the Section element
 const sectGallery = document.getElementById('gallery');
 
-//Function to display all images inside of the Section element
-function displayAll_button {
+//Displaying all photos as default screen
+// const imgDisplay = document.createElement('img');
+// imgDisplay.src = photos.url;
+// sectGallery.appendChild(imgDisplay);
 
+//Function to display all images inside of the Section element
+function displayAll_button() {
+    //Removes all images already displayed before hand
+    sectGallery.innerHTML = ' ';
 };
 
 //Function to display only nature pics
-function displayNature_button {
+function displayNature_button() {
+    sectGallery.innerHTML = ' ';
 
+    //Sorting through what images fall under 'nature'
+    const naturePics = photos.filter(photo => photo.type === 'nature');
+
+    //Arrow function used for simplicity, even if it's a little cryptic still-
+    naturePics.forEach(photos => {
+        const imgDisplay = document.createElement('img');
+        imgDisplay.src = photos.url;
+
+        sectGallery.appendChild(imgDisplay);
+    })
 };
 
 //Function to display only city pics
-function displayCity_button {
-
+function displayCity_button() {
+    sectGallery.innerHTML = ' ';
 };
 
 //Function to display only animal pics
-function displayAnimals_button {
-
+function displayAnimals_button() {
+    sectGallery.innerHTML = ' ';
 };
+
+//Creating a variable for the Buttons
+const buttonAll = document.getElementById('all');
+const buttonNature = document.getElementById('nature');
+const buttonCity = document.getElementById('city');
+const buttonAnimal = document.getElementById('animals');
+
+//Events for when buttons get clicked on
+document.getElementById('all').addEventListener('click', displayAll_button);
+document.getElementById('nature').addEventListener('click', displayNature_button);
+document.getElementById('city').addEventListener('click', displayCity_button);
+document.getElementById('animals').addEventListener('click', displayAnimals_button);
