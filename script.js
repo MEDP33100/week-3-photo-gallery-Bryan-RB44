@@ -60,8 +60,9 @@ const sectGallery = document.getElementById('gallery');
 //Using "let" since it's going to be a changing value
 //This variable will be used to keep track of how many images can be loaded later on
 let spotIn_array = 0;
-
 //Displaying all photos as default screen
+displayMore();
+//OLDER METHOD BELOW
 // function defaultPage() {
 //     const groupLoaded = photos.slice(spotIn_array, spotIn_array+6);
 
@@ -74,8 +75,6 @@ let spotIn_array = 0;
 //     spotIn_array += 6;
 // };
 // window.onload = defaultPage();
-
-//displayMore();
 
 //Function to display all images inside of the Section element
 //Also sets up the "Load More" button for when you click on the "All" tab, without it the button won't work despite the first 6 images being the only ones loaded up
