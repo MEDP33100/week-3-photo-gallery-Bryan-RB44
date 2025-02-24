@@ -81,10 +81,11 @@ displayMore();
 //Also sets up the "Load More" button for when you click on the "All" tab, without it the button won't work despite the first 6 images being the only ones loaded up
 function displayAll_button() {
     sectGallery.innerHTML = ' ';
+    spotIn_array = 0;
 
-    const groupLoaded = photos.slice(spotIn_array, spotIn_array+6);
+    const groupLoaded_forAll = photos.slice(spotIn_array, spotIn_array+6);
 
-    groupLoaded.forEach(photos => {
+    groupLoaded_forAll.forEach(photos => {
         const imgDisplay = document.createElement('img');
         imgDisplay.src = photos.url;
 
