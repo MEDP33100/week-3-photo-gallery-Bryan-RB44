@@ -57,27 +57,61 @@ console.log('hello');
 
 //Creating a variable for the Section element
 const sectGallery = document.getElementById('gallery');
+//Using "let" since it's going to be a changing value
+//This variable will be used to keep track of how many images can be loaded later on
+let spotIn_array = 0;
 
 //Displaying all photos as default screen
-// const imgDisplay = document.createElement('img');
-// imgDisplay.src = photos.url;
-// sectGallery.appendChild(imgDisplay);
+// function defaultPage() {
+//     const groupLoaded = photos.slice(spotIn_array, spotIn_array+6);
+
+//     groupLoaded.forEach(photos => {
+//         const imgDisplay = document.createElement('img');
+//         imgDisplay.src = photos.url;
+
+//         sectGallery.appendChild(imgDisplay);
+//     })
+//     spotIn_array += 6;
+// };
+// window.onload = defaultPage();
+
+//displayMore();
 
 //Function to display all images inside of the Section element
+//Also sets up the "Load More" button for when you click on the "All" tab, without it the button won't work despite the first 6 images being the only ones loaded up
 function displayAll_button() {
-    //Removes all images already displayed before hand
-    sectGallery.innerHTML = ' ';
     
-    photos.forEach(photos => {
+
+    const groupLoaded = photos.slice(spotIn_array, spotIn_array+6);
+
+    groupLoaded.forEach(photos => {
         const imgDisplay = document.createElement('img');
         imgDisplay.src = photos.url;
 
         sectGallery.appendChild(imgDisplay);
     })
+
+    //After each button press, 6 more images get loaded in (as long as there's more to load in of course)
+    spotIn_array += 6;
 };
+
+//Function for the "Load More" button to work both on the "All" tab and the default page when loaded up
+function displayMore() {
+    const groupLoaded = photos.slice(spotIn_array, spotIn_array+6);
+
+    groupLoaded.forEach(photos => {
+        const imgDisplay = document.createElement('img');
+        imgDisplay.src = photos.url;
+
+        sectGallery.appendChild(imgDisplay);
+    })
+
+    spotIn_array += 6;
+}
 
 //Function to display only nature pics
 function displayNature_button() {
+    //Removes all images already displayed before hand
     sectGallery.innerHTML = ' ';
 
     //Sorting through what images fall under 'nature'
@@ -134,4 +168,4 @@ document.getElementById('nature').addEventListener('click', displayNature_button
 document.getElementById('city').addEventListener('click', displayCity_button);
 document.getElementById('animals').addEventListener('click', displayAnimals_button);
 //Event for loading more images
-document.getElementById('loadMore');
+document.getElementById('loadMore').addEventListener('click', displayMore);
