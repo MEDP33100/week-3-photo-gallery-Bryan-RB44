@@ -88,14 +88,34 @@ function displayNature_button() {
 //Function to display only city pics
 function displayCity_button() {
     sectGallery.innerHTML = ' ';
+
+    //Sorting through what images fall under 'city'
+    const cityPics = photos.filter(photo => photo.type === 'city');
+
+    cityPics.forEach(photos => {
+        const imgDisplay = document.createElement('img');
+        imgDisplay.src = photos.url;
+
+        sectGallery.appendChild(imgDisplay);
+    })
 };
 
 //Function to display only animal pics
 function displayAnimals_button() {
     sectGallery.innerHTML = ' ';
+
+    //Sorting through what images fall under 'city'
+    const animalPics = photos.filter(photo => photo.type === 'animals');
+
+    animalPics.forEach(photos => {
+        const imgDisplay = document.createElement('img');
+        imgDisplay.src = photos.url;
+
+        sectGallery.appendChild(imgDisplay);
+    })
 };
 
-//Creating a variable for the Buttons
+//Creating variables for the Buttons
 const buttonAll = document.getElementById('all');
 const buttonNature = document.getElementById('nature');
 const buttonCity = document.getElementById('city');
