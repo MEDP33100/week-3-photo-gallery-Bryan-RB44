@@ -1,3 +1,7 @@
+// (Most comments will just be for my own self reference)
+
+//Creating a variable "photos" for all images, with different images using different types to differentiate them.
+
 const photos = [
     {
         url: 'https://plus.unsplash.com/premium_photo-1673292293042-cafd9c8a3ab3?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
@@ -50,3 +54,26 @@ const photos = [
 ];
 
 console.log('hello');
+
+//Creating a variable for the Section element
+const sectGallery = document.getElementById('gallery');
+
+//Function to display all images inside of the Section element
+function displayAll_button {
+
+};
+
+//Function to display only nature pics
+function displayNature_button {
+
+};
+
+//Function to display only city pics
+function displayCity_button {
+
+};
+
+//Function to display only animal pics
+function displayAnimals_button {
+
+};
