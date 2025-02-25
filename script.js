@@ -60,27 +60,18 @@ const sectGallery = document.getElementById('gallery');
 //Using "let" since it's going to be a changing value
 //This variable will be used to keep track of how many images can be loaded later on
 let spotIn_array = 0;
-
-//Displaying all photos as default screen
-displayMore();
-//OLDER METHOD BELOW
-// function defaultPage() {
-//     const groupLoaded = photos.slice(spotIn_array, spotIn_array+6);
-
-//     groupLoaded.forEach(photos => {
-//         const imgDisplay = document.createElement('img');
-//         imgDisplay.src = photos.url;
-
-//         sectGallery.appendChild(imgDisplay);
-//     })
-//     spotIn_array += 6;
-// };
-// window.onload = defaultPage();
+//Creating variables for the Buttons
+const buttonAll = document.getElementById('all');
+const buttonNature = document.getElementById('nature');
+const buttonCity = document.getElementById('city');
+const buttonAnimal = document.getElementById('animals');
 
 //Function to display all images inside of the Section element
-//Also sets up the "Load More" button for when you click on the "All" tab, without it the button won't work despite the first 6 images being the only ones loaded up
+//Also sets it up similarly to the "Load More" button just so only 6 images are shown at a time
 function displayAll_button() {
     sectGallery.innerHTML = ' ';
+    
+    //IMPORTANT: Reset the position of the array since otherwise, all images will stay wiped on the "All" tab or show 8 images, very weird bugs in general.
     spotIn_array = 0;
 
     const groupLoaded_forAll = photos.slice(spotIn_array, spotIn_array+6);
@@ -97,8 +88,10 @@ function displayAll_button() {
 
 //Function for the "Load More" button to work both on the "All" tab and the default page when loaded up
 function displayMore() {
+    //The array is sliced, so that the current position goes from the current position up to the next 6 positions
     const groupLoaded = photos.slice(spotIn_array, spotIn_array+6);
 
+    //forEach is used to display each image in the "photos" array
     groupLoaded.forEach(photos => {
         const imgDisplay = document.createElement('img');
         imgDisplay.src = photos.url;
@@ -106,9 +99,25 @@ function displayMore() {
         sectGallery.appendChild(imgDisplay);
     })
 
+    //Updates the position
     spotIn_array += 6;
 }
 
+//Displaying all photos as default screen
+displayMore();
+//OLDER METHOD I TRIED AT FIRST BELOW
+// function defaultPage() {
+//     const groupLoaded = photos.slice(spotIn_array, spotIn_array+6);
+
+//     groupLoaded.forEach(photos => {
+//         const imgDisplay = document.createElement('img');
+//         imgDisplay.src = photos.url;
+
+//         sectGallery.appendChild(imgDisplay);
+//     })
+//     spotIn_array += 6;
+// };
+// window.onload = defaultPage();
 
 //Function to display only nature pics
 function displayNature_button() {
@@ -118,7 +127,8 @@ function displayNature_button() {
     //Sorting through what images fall under 'nature'
     const naturePics = photos.filter(photo => photo.type === 'nature');
 
-    //Arrow function used for simplicity, even if it's a little cryptic still-
+    //Arrow function used for simplicity, even if it's a little cryptic to me still-
+    //forEach already explained before
     naturePics.forEach(photos => {
         const imgDisplay = document.createElement('img');
         imgDisplay.src = photos.url;
@@ -156,12 +166,6 @@ function displayAnimals_button() {
         sectGallery.appendChild(imgDisplay);
     })
 };
-
-//Creating variables for the Buttons
-const buttonAll = document.getElementById('all');
-const buttonNature = document.getElementById('nature');
-const buttonCity = document.getElementById('city');
-const buttonAnimal = document.getElementById('animals');
 
 //Events for when buttons get clicked on
 document.getElementById('all').addEventListener('click', displayAll_button);
