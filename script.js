@@ -109,6 +109,7 @@ function displayMore() {
     spotIn_array += 6;
 }
 
+
 //Function to display only nature pics
 function displayNature_button() {
     //Removes all images already displayed before hand
